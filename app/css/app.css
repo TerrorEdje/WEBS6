@@ -2,3 +2,7 @@
   text-decoration: line-through;
   color: grey;
 }
+
+.gametable td{
+	border:solid 1px black;
+}

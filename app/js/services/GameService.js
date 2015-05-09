@@ -90,11 +90,27 @@ angular.module('webs6').service('GameService', function($http){
 	this.getGames =  function(){
 		return $http.get('http://mahjongmayhem.herokuapp.com/games').
 	    success(function(data, status, headers, config) {
-	      //console.log('api returns: ' + data);
-	      //return data;
 	    }).
 	    error(function(data, status, headers, config) {
 	     	alert('error in api request');
 	    });
 	};
+
+	this.getGame = function(id){
+		return $http.get('http://mahjongmayhem.herokuapp.com/games/' + id).
+	    success(function(data, status, headers, config) {
+	    }).
+	    error(function(data, status, headers, config) {
+	     	alert('error in api request');
+	    });
+	}
+
+	this.getGameTiles = function(id){
+		return $http.get('http://mahjongmayhem.herokuapp.com/games/' + id + '/tiles').
+	    success(function(data, status, headers, config) {
+	    }).
+	    error(function(data, status, headers, config) {
+	     	alert('error in api request');
+	    });
+	}
 });

@@ -1,10 +1,9 @@
 angular.module('webs6').controller('GameListController', function(GameService, UserService, $http, $scope, $rootScope){
 	this.games;
 	this.game = {"layout": "Ox", "minPlayers":2, "maxPlayers":3};
-
 	this.init = function()
-	{ var gamesCtrl = this;
-  		$scope.games = GameService.games;
+	{ 
+		var gamesCtrl = $scope;
       	GameService.getGames().then(function(response){
       		gamesCtrl.games = response.data;
       	});
