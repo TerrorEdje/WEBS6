@@ -20,7 +20,10 @@
 									<td>{{game.players.length + 1}}/{{game.maxPlayers}}</td>
 									<td>{{game.gameTemplate.id}}</td>
 									<td>{{game.state}}</td>
-									<td><a href="#/games/{{game.id}}" class="btn btn-primary btn-xs" ng-hide="game.state=='finished' || (game.players.length + 1) >= game.maxPlayers" ng-click="joinGame(game)">Join</a></td>
+									<td>
+										<a href="#/games/{{game.id}}" class="btn btn-primary btn-xs" ng-hide="game.state!='finished'" ng-click="joinGame(game)">View</a>
+										<a href="" class="btn btn-default btn-xs" ng-hide="game.state=='finished' || (game.players.length + 1) >= game.maxPlayers" ng-click="joinGame(game)">Join</a>
+									</td>
 								</tr>					
 							</tbody>
 						</table>
