@@ -1,0 +1,12 @@
+angular.module('webs6').directive('helloWorld', function(){
+	return{
+		restrict: 'E',
+		template: '<h1>Hello World</h1>'
+	}
+});
+angular.module('webs6').directive('gameListTable', function(){
+	return{
+		restrict: 'E',
+		templateUrl: './views/gameListTable.html'
+	}
+});
