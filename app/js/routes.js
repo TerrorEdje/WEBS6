@@ -2,7 +2,7 @@
         $routeProvider
 
             // route for the home page
-            .when('/', {
+            .when('/home', {
                 templateUrl : 'views/game-list.html',
                 controller  : 'GameListController'
             })
@@ -11,5 +11,7 @@
             .when('/games/:gameId', {
                 templateUrl : 'views/game-detail.html',
                 controller  : 'GameController'
+            }).otherwise({
+                redirectTo: '/home'
             })
     });

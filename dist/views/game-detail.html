@@ -1,20 +1,40 @@
 <div class="container-fluid">
-			<div class="col-md-3"></div>
-			<div class="col-md-6">
-				<br/>
-				<div class="starter-template">
-					<table class="table table-hover gametable">
-						<tbody>
-							<tr ng-repeat="row in rows">
-								<td ng-repeat="vertRow in row track by $index" class="{{vertRow.length > 0 ? 'success' : ''}}">
-									<div ng-show="vertRow.length > 0">
-										{{vertRow.length}}
-									</div>
-								</td>
-							</tr>
-						</tbody>
-					</table>
+	<div class="col-md-2"></div>
+	<div class="col-md-8">
+		<h1>Mahjong Mayhem</h1>
+		<h3>Game</h3>
+		<a href="#/home" class="btn btn-default">return
+		</a>
+		<p>
+			<div class="row">
+				<div class="col-md-5">
+					Created by: {{game.createdBy.name}}<br/>
+					Layout: {{game.gameTemplate._id}}
+				</div>
+				<div class="col-md-4">
+					Minimum players: {{game.minPlayers}}<br/>
+					Maximum players: {{game.maxPlayers}}
+				</div>
+				<div class="col-md-3">
+					State: {{game.state}}<br/>
+					Players: {{game.players.length + 1}}
 				</div>
 			</div>
-			<div class="col-md-3"></div>
+		</p>
+		<div class="starter-template">
+			<table class="table table-hover gametable">
+				<thead></thead>
+				<tbody>
+					<tr ng-repeat="row in rows">
+						<td ng-repeat="vertRow in row track by $index" class="{{vertRow.length > 0 ? 'success' : ''}}">
+							<div ng-show="vertRow.length > 0">
+								{{vertRow.length}}
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="col-md-2"></div>
 </div>

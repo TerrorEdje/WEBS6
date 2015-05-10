@@ -16,18 +16,24 @@ angular.module('webs6').controller('GameController', function(GameService, UserS
 		GameService.getGameTiles($scope.gameId).then(function(response){
       		var tiles = response.data;
       		var rows = [];
-      		for ( var i = 0; i < 30; i++ ){ 
+      		var xMax = 0; var yMax = 0;
+      		for (var i = tiles.length - 1; i >= 0; i--) {
+      			var tile = tiles[i];
+      			if(tile.xPos > xMax) {xMax = tile.xPos}
+      			if(tile.yPos > yMax) {yMax = tile.yPos}
+      		};
+      		for ( var i = 0; i < yMax; i++ ){ 
       			rows[i] = [];
-      			for(var j = 0; j < 30; j++){
+      			for(var j = 0; j < xMax; j++){
       				rows[i][j] = [];
       			}
       		}
+      		console.log($scope.rows); console.log(xMax);
       		for (var i = tiles.length - 1; i >= 0; i--) {
       			var tile = tiles[i];
       			rows[tile.yPos - 1][tile.xPos - 1][tile.zPos] = tile;
       		};
       		$scope.rows = rows;
-      		console.log($scope.rows);
       	});
 	}
 	this.init();
