@@ -113,4 +113,13 @@ angular.module('webs6').service('GameService', function($http){
 	     	alert('error in api request');
 	    });
 	}
+
+	this.getGameTemplate = function(layout){
+		return $http.get('http://mahjongmayhem.herokuapp.com/gameTemplates/' + layout).
+	    success(function(data, status, headers, config) {
+	    }).
+	    error(function(data, status, headers, config) {
+	     	alert('error in api request');
+	    });
+	}
 });

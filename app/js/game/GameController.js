@@ -1,5 +1,5 @@
 angular.module('webs6').controller('GameController', function(GameService, UserService, $http, $scope, $routeParams){
-	$scope.game = {"layout": "Ox", "minPlayers":2, "maxPlayers":3};
+      $scope.game = {name: "Mahjong Mayhem", minPlayers: "-", maxPlayers: "-", state:"template", createdBy: {name: "Mahjong Mayhem"}, gameTemplate: {_id:$routeParams.gameId}};
 	$scope.gameId = $routeParams.gameId;
 	$scope.rows;
       $scope.loadingInfo = true;

@@ -11,7 +11,15 @@
             .when('/games/:gameId', {
                 templateUrl : 'views/game-detail.html',
                 controller  : 'GameController'
-            }).otherwise({
+            })
+
+            // route for the game template view
+            .when('/template/:layout', {
+                templateUrl : 'views/game-detail.html',
+                controller  : 'GameTemplateController'
+            })
+
+            .otherwise({
                 redirectTo: '/home'
             })
     });

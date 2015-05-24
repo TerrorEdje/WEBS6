@@ -11,6 +11,9 @@ require('./game/GameListController.js');
 //detail screen imports
 require('./game/GameController.js');
 
+//template screen imports
+require('./game/GameTemplateController.js');
+
 //services
 require('./services/GameService.js');
 require('./services/UserService.js');
