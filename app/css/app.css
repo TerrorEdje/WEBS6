@@ -15,6 +15,11 @@
 	margin:0 auto;
 }
 
+.gametable{
+	margin: 0 auto;
+	text-align:center;
+}
+
 .gametable td{
 	padding:0px;
 }

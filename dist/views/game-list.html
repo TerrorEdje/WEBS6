@@ -28,8 +28,8 @@
 								</tr>					
 							</tbody>
 						</table>
-						<a class="btn {{showCreate ? 'btn-default' : 'btn-primary'}}" ng-click="showCreate=!showCreate">{{showCreate ? 'Cancel' : 'Create Game'}}</a>
-						<div ng-show="showCreate">
+						<a class="btn {{showCreate ? 'btn-default' : 'btn-primary'}}" href="#create" du-smooth-scroll ng-click="showCreate=!showCreate">{{showCreate ? 'Cancel' : 'Create Game'}}</a>
+						<div ng-show="showCreate" id="create">
 							<div class="col-md-12">
 								View template examples:
 								<a href="#/template/shanghai">shanghai</a> | <a href="#/template/rooster">rooster</a> | <a href="#/template/snake">snake</a> | <a href="#/template/monkey">monkey</a> | <a href="#/template/ox">ox</a> | <a href="#/template/ram">ram</a> | <a href="#/template/dragon">dragon</a>

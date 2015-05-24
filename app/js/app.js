@@ -1,8 +1,9 @@
 require('angular/angular');
-require('angular-route/angular-route.js');
+require('angular-route/angular-route');
+require('angular-scroll/angular-scroll');
 
 // Create your app
-var app = angular.module('webs6', ['ngRoute']);
+var app = angular.module('webs6', ['ngRoute', 'duScroll']);
 
 //home screen imports
 require('./game/GameListDirectives.js');
