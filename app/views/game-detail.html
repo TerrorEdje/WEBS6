@@ -31,7 +31,7 @@
 							<td ng-repeat="vertRow in row track by $index" class="{{vertRow.length > 0 ? 'success' : ''}}">
 								<div ng-show="vertRow.length > 0">
 									<img class="tile {{vertRow[vertRow.length - 1].tile.suit}} t_{{vertRow[vertRow.length - 1].tile.name}}"
-									src="//:0"></img>
+									src="//:0" ng-click="match(vertRow[vertRow.length - 1])"></img>
 								</div>
 							</td>
 						</tr>

@@ -5,6 +5,9 @@ angular.module('webs6').controller('GameController', function(GameService, UserS
       $scope.loadingInfo = true;
       $scope.loadignTiles = true;
       $scope.loading = true;
+
+      $scope.matchTile = null;
+
 	this.init = function()
 	{ 
 		var gamesCtrl = $scope;
@@ -44,6 +47,45 @@ angular.module('webs6').controller('GameController', function(GameService, UserS
       	});
 	}
 	this.init();
+
+      $scope.match = function(tile)
+      {
+            var matchTile = $scope.matchTile;
+            console.log(tile);
+            if(matchTile != null)
+            {
+                  if(
+                        ((matchTile.tile.matchesWholeSuit && matchTile.tile.suit == tile.tile.suit) 
+                         || (matchTile.tile.suit == tile.tile.suit && matchTile.tile.name == tile.tile.name))
+                        &&(matchTile.tile != tile.tile)
+
+                  ){
+                        console.log('match!');
+                        var rows = $scope.rows;
+                        var zRow1 = rows[matchTile.yPos - 1][matchTile.xPos - 1]; 
+                        var zRow2 = rows[tile.yPos - 1][tile.xPos - 1]; 
+                        if(zRow1.length > 1)
+                        {
+                              rows[matchTile.yPos - 1][matchTile.xPos - 1].splice(matchTile.zPos - 1, 1);
+                        }else{
+                              rows[matchTile.yPos - 1][matchTile.xPos - 1] = [];
+                        }
+
+                        if(zRow2.length > 1)
+                        {
+                              rows[tile.yPos - 1][tile.xPos - 1].splice(tile.zPos - 1, 1);
+                        }else{
+                              rows[tile.yPos - 1][tile.xPos - 1] = []
+                        }
+                        
+                  }else{
+                        console.log('no match!')
+                  }
+                  $scope.matchTile = null;
+            }else{
+                  $scope.matchTile = tile;
+            }
+      }
 
       function checkLoading(){
             if(!$scope.loadignTiles && !$scope.loadingInfo)
