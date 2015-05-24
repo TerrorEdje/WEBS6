@@ -10,3 +10,9 @@ angular.module('webs6').directive('gameListTable', function(){
 		templateUrl: './views/gameListTable.html'
 	}
 });
+angular.module('webs6').directive('loader', function(){
+	return{
+		restrict: 'E',
+		template: '<p ng-if="loading" class="loading"></p>'
+	}
+});

@@ -1,19 +1,19 @@
 <table class="table table-hover">
-	<thead>
-		<tr>
-			<td>Creator</td>
-			<td>Playercount</td>
-			<td>Layout</td>
-			<td>Status</td>
-		</tr>
-	</thead>
-	<tbody>				
-		<tr class="{{(game.state == 'open' && (game.players.length + 1 < game.maxPlayers) ? 'success' : 'warning')}}" ng-repeat="game in games | orderBy: 'game.maxPlayers'">
-			<td>{{game.createdBy.name}}</td>
-			<td>{{game.players.length + 1}}/{{game.maxPlayers}}</td>
-			<td>{{game.gameTemplate.id}}</td>
-			<td>{{game.state}}</td>
-			<td><a href="#/games/{{game.id}}" class="btn btn-primary btn-xs" ng-hide="game.state=='finished' || (game.players.length + 1) >= game.maxPlayers" ng-click="joinGame(game)">Join</a></td>
-		</tr>					
-	</tbody>
-</table>
+							<thead>
+								<tr>
+									<td>Creator</td>
+									<td>Playercount</td>
+									<td>Layout</td>
+									<td>Status</td>
+								</tr>
+							</thead>
+							<tbody>				
+								<tr class="{{(game.state == 'open' && (game.players.length + 1 < game.maxPlayers) ? 'success' : 'warning')}}" ng-repeat="game in gamesCtrl.games | orderBy: 'game.maxPlayers'">
+									<td>{{game.createdBy.name}}</td>
+									<td>{{game.players.length + 1}}/{{game.maxPlayers}}</td>
+									<td>{{game.gameTemplate.id}}</td>
+									<td>{{game.state}}</td>
+									<td><a class="btn btn-primary btn-xs" ng-hide="game.state=='finished' || (game.players.length + 1) >= game.maxPlayers" ng-click="gamesCtrl.joinGame(game)">Join</a></td>
+								</tr>					
+							</tbody>
+						</table>

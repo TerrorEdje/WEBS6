@@ -3,6 +3,81 @@
   color: grey;
 }
 
-.gametable td{
-	border:solid 1px black;
+.loading{
+	background-image: url('./res/load.gif');
+	background-repeat: no-repeat;
+	background-position:center; 
+	width:100%;
+	height:150px;
+	text-align: center;
 }
+.loading img{
+	margin:0 auto;
+}
+
+.gametable td{
+	padding:0px;
+}
+
+.tile {
+	width: 36px;
+	height:45px;
+	background-image: url('./res/tiles.png');
+	background-size: 512px 135px;
+
+}
+
+/* CHARACTER SUIT */
+.tile.character.t_1 {background-position: 0 0;}
+.tile.character.t_2 {background-position: -36px 0px;}
+.tile.character.t_3 {background-position: -72px 0px;}
+.tile.character.t_4 {background-position: -110px 0px;}
+.tile.character.t_5 {background-position: -147px 0px;}
+.tile.character.t_6 {background-position: -183px 0px;}
+.tile.character.t_7 {background-position: -219px 0px;}
+.tile.character.t_8 {background-position: -256px 0px;}
+
+/* DRAGON SUIT */
+.tile.dragon.t_green {background-position: -475px 0px;}
+.tile.dragon.t_white {background-position: -475px 45px;}
+.tile.dragon.t_red {background-position: -475px 90px;}
+
+/* CIRCLE SUIT */
+.tile.circle.t_1 {background-position: 0px 45px;}
+.tile.circle.t_2 {background-position: -36px 45px;}
+.tile.circle.t_3 {background-position: -72px 45px;}
+.tile.circle.t_4 {background-position: -110px 45px;}
+.tile.circle.t_5 {background-position: -147px 45px;}
+.tile.circle.t_6 {background-position: -183px 45px;}
+.tile.circle.t_7 {background-position: -219px 45px;}
+.tile.circle.t_8 {background-position: -256px 45px;}
+.tile.circle.t_9 {background-position: -293px 45px;}
+
+/* BAMBOO SUIT */
+.tile.bamboo.t_1 {background-position: 0px 90px;}
+.tile.bamboo.t_2 {background-position: -36px 90px;}
+.tile.bamboo.t_3 {background-position: -72px 90px;}
+.tile.bamboo.t_4 {background-position: -110px 90px;}
+.tile.bamboo.t_5 {background-position: -147px 90px;}
+.tile.bamboo.t_6 {background-position: -183px 90px;}
+.tile.bamboo.t_7 {background-position: -219px 90px;}
+.tile.bamboo.t_8 {background-position: -256px 90px;}
+.tile.bamboo.t_9 {background-position: -293px 90px;}
+
+/* FLOWER SUIT */
+.tile.flower.t_bamboo {background-position: -329px 45px;}
+.tile.flower.t_plum {background-position: -365px 45px;}
+.tile.flower.t_orchid {background-position: -402px 45px;}
+.tile.flower.t_chrysanthemum {background-position: -439px 45px;}
+
+/* SEASON SUIT */
+.tile.season.t_spring {background-position: -329px 90px;}
+.tile.season.t_summer {background-position: -365px 90px;}
+.tile.season.t_autumn {background-position: -402px 90px;}
+.tile.season.t_winter {background-position: -439px 90px;}
+
+/* SEASON SUIT */
+.tile.wind.t_North {background-position: -329px 0px;}
+.tile.wind.t_South {background-position: -365px 0px;}
+.tile.wind.t_East {background-position: -402px 0px;}
+.tile.wind.t_West {background-position: -439px 0px;}

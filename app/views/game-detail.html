@@ -22,13 +22,15 @@
 			</div>
 		</p>
 		<div class="starter-template">
-			<table class="table table-hover gametable">
+			<loader></loader>
+			<table class="gametable" ng-if="!loading">
 				<thead></thead>
 				<tbody>
 					<tr ng-repeat="row in rows">
 						<td ng-repeat="vertRow in row track by $index" class="{{vertRow.length > 0 ? 'success' : ''}}">
 							<div ng-show="vertRow.length > 0">
-								{{vertRow.length}}
+								<img class="tile {{vertRow[vertRow.length - 1].tile.suit}} t_{{vertRow[vertRow.length - 1].tile.name}}"
+								src="//:0"></img>
 							</div>
 						</td>
 					</tr>

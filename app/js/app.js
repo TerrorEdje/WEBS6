@@ -5,7 +5,7 @@ require('angular-route/angular-route.js');
 var app = angular.module('webs6', ['ngRoute']);
 
 //home screen imports
-require('./game/GameDirectives.js');
+require('./game/GameListDirectives.js');
 require('./game/GameListController.js');
 
 //detail screen imports
