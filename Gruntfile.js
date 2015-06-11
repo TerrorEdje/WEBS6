@@ -48,13 +48,13 @@ module.exports = function(grunt) {
 	   },
 	});
 
- // Load the npm installed tasks
- grunt.loadNpmTasks('grunt-browserify');
- grunt.loadNpmTasks('grunt-contrib-copy');
- grunt.loadNpmTasks('grunt-contrib-watch');
+	// Load the npm installed tasks
+	grunt.loadNpmTasks('grunt-browserify');
+	grunt.loadNpmTasks('grunt-contrib-copy');
+	grunt.loadNpmTasks('grunt-contrib-watch');
 
- // The default tasks to run when you type: grunt
- grunt.registerTask('default', ['browserify', 'copy']);
+	// The default tasks to run when you type: grunt
+    grunt.registerTask('default', ['browserify', 'copy']);
 
 
 };

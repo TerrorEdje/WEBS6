@@ -4,6 +4,7 @@ angular.module('webs6').service('GameService', function($http){
 		 "layout": "shanghai", // -> 'shanghai'|'snake'|'ox'|'ram'|'dragon'|'rooster'|'monkey'
 		 "createdOn": "date", // date + time
 		 "startedOn": "date", // date + time
+		 "id": "1",
 		 "endedOn": "date", // date + time
 		 "createdBy": {
 		   "id": "yahegge", // Avans username
@@ -26,6 +27,7 @@ angular.module('webs6').service('GameService', function($http){
 		 "layout": "dragon", // -> 'shanghai'|'snake'|'ox'|'ram'|'dragon'|'rooster'|'monkey'
 		 "createdOn": "date", // date + time
 		 "startedOn": "date", // date + time
+		 "id": "2",
 		 "endedOn": "date", // date + time
 		 "createdBy": {
 		   "id": "egjhattink", // Avans username
@@ -54,6 +56,7 @@ angular.module('webs6').service('GameService', function($http){
 		 "layout": "ox", // -> 'shanghai'|'snake'|'ox'|'ram'|'dragon'|'rooster'|'monkey'
 		 "createdOn": "date", // date + time
 		 "startedOn": "date", // date + time
+		 "id": "3",
 		 "endedOn": "date", // date + time
 		 "createdBy": {
 		   "id": "egjhattink", // Avans username
