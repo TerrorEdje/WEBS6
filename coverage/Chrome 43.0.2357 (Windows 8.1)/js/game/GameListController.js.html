@@ -12,13 +12,13 @@
     </style>
 </head>
 <body>
-<div class="header low">
+<div class="header high">
     <h1>Code coverage report for <span class="entity">js\game\GameListController.js</span></h1>
     <h2>
-        Statements: <span class="metric">5.56% <small>(1 / 18)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">83.33% <small>(15 / 18)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Branches: <span class="metric">100% <small>(0 / 0)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Functions: <span class="metric">0% <small>(0 / 5)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">5.56% <small>(1 / 18)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">60% <small>(3 / 5)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">83.33% <small>(15 / 18)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
     <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">js/game/</a> &#187; GameListController.js</div>
@@ -52,63 +52,63 @@
 25
 26
 27</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">angular.module('webs6').controller('GameListController', <span class="fstat-no" title="function not covered" >function(GameService, UserService, $http, $scope, $rootScope){</span>
-<span class="cstat-no" title="statement not covered" >	this.games;</span>
-<span class="cstat-no" title="statement not covered" >	this.game = {"layout": "Ox", "minPlayers":2, "maxPlayers":3};</span>
-<span class="cstat-no" title="statement not covered" >	$scope.loading = true;</span>
-<span class="cstat-no" title="statement not covered" >	this.init = <span class="fstat-no" title="function not covered" >function()</span></span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">angular.module('webs6').controller('GameListController', function(GameService, UserService, $http, $scope, $rootScope){
+	this.games;
+	this.game = {"layout": "Ox", "minPlayers":2, "maxPlayers":3};
+	$scope.loading = true;
+	this.init = function()
 	{ 
-<span class="cstat-no" title="statement not covered" >		var gamesCtrl = $scope;</span>
-<span class="cstat-no" title="statement not covered" >      	GameService.getGames().then(<span class="fstat-no" title="function not covered" >function(response){</span></span>
+		var gamesCtrl = $scope;
+      	GameService.getGames().then(<span class="fstat-no" title="function not covered" >function(response){</span>
 <span class="cstat-no" title="statement not covered" >      		gamesCtrl.games = response.data;</span>
 <span class="cstat-no" title="statement not covered" >      		$scope.loading = false;</span>
       	});
 	}
 &nbsp;
-<span class="cstat-no" title="statement not covered" >	this.addGame = <span class="fstat-no" title="function not covered" >function(){</span></span>
-<span class="cstat-no" title="statement not covered" >		var game = this.game;</span>
-<span class="cstat-no" title="statement not covered" >		game.createdBy = UserService.player;</span>
-<span class="cstat-no" title="statement not covered" >		game.createdOn = Date.now();</span>
-<span class="cstat-no" title="statement not covered" >		game.state = 'open';</span>
-<span class="cstat-no" title="statement not covered" >		GameService.addGame(game);</span>
+	this.addGame = function(){
+		var game = this.game;
+		game.createdBy = UserService.player;
+		game.createdOn = Date.now();
+		game.state = 'open';
+		GameService.addGame(game);
 	};
 &nbsp;
-<span class="cstat-no" title="statement not covered" >	this.joinGame = <span class="fstat-no" title="function not covered" >function(game){</span></span>
+	this.joinGame = <span class="fstat-no" title="function not covered" >function(game){</span>
 <span class="cstat-no" title="statement not covered" >		GameService.joinGame(UserService.player, game);</span>
 	}
 &nbsp;
-<span class="cstat-no" title="statement not covered" >	this.init();</span>
+	this.init();
 });</pre></td></tr>
 </table></pre>
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon May 25 2015 13:03:57 GMT+0200 (W. Europe Daylight Time)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Jun 02 2015 11:56:18 GMT+0200 (W. Europe Daylight Time)</div>
 </div>
 <script src="../../prettify.js"></script>
 <script>
