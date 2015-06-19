@@ -1,4 +1,4 @@
-angular.module('everyware.web').config(function($stateProvider, $urlRouterProvider) {
+angular.module('webs6').config(function($stateProvider, $urlRouterProvider) {
   //
   // For any unmatched url, redirect to /state1
   $urlRouterProvider.otherwise("/home");
@@ -6,31 +6,21 @@ angular.module('everyware.web').config(function($stateProvider, $urlRouterProvid
   // Now set up the states
   $stateProvider
     .state('home', {
-      url: "/home",
-      templateUrl: "views/game-list.html",
+      url: '/home',
+      templateUrl: 'views/game-list.html',
         controller  : 'GameListController'
+    })
+
+    .state('game-detail', {
+    	url: 'games/:gameId',
+    	templateUrl: 'views/game-detail.html',
+    	controller: 'GameController'
+    })
+
+    .state('template-layout', {
+    	url: 'template/:layout',
+    	templateUrl: 'views/game-detail.html',
+    	controller: 'GameTemplateController'
     });
+
 });
-
-           /* // route for the home page
-            .when('/home', {
-                templateUrl : 'views/game-list.html',
-                controller  : 'GameListController'
-            })
-
-            // route for the detail game
-            .when('/games/:gameId', {
-                templateUrl : 'views/game-detail.html',
-                controller  : 'GameController'
-            })
-
-            // route for the game template view
-            .when('/template/:layout', {
-                templateUrl : 'views/game-detail.html',
-                controller  : 'GameTemplateController'
-            })
-
-            .otherwise({
-                redirectTo: '/home'
-            })
-    });*/
