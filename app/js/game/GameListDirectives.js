@@ -16,3 +16,9 @@ angular.module('webs6').directive('loader', function(){
 		template: '<p ng-if="loading" class="loading"></p>'
 	}
 });
+angular.module('webs6').directive('hoverdetail', function(){
+	return{
+		restrict: 'E',
+		template: '<div class="hoverdetail">abc</div>'
+	}
+});

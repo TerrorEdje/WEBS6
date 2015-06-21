@@ -1,11 +1,60 @@
 <div class="container-fluid">
 			<div class="row">
-				<div class="col-md-4"></div>
+				<div class="col-md-3"></div>
+				<div class="col-md-4">
+					<h1>Mahjong Mayhem</h1>
+					<h4>Multiplayer Games</h4>
+				</div>
+				<div class="col-md-5"></div>
+			</div>
+			<div class="row">
+				<div class="col-md-3"></div>
 				<div class="col-md-4">
 					<div class="starter-template">
-						<h1>Mahjong Mayhem</h1>
-						<h4>Multiplayer Games</h4>
 						<loader></loader>
+						<form ng-submit="search()">
+							<div class="form-group">
+						    	<label for="layoutSelect" class="col-sm-2 control-label">Layout</label>
+							    <div class="col-sm-4">
+						      		<select class="form-control" id="layoutSelect" ng-model="searchLayout">
+						      			<option value="Ox">Ox</option>
+						      			<option value="Shanghai">Shanghai</option>
+						      			<option value="Rooster">Rooster</option>
+						      			<option value="Snake">Snake</option>
+						      			<option value="Monkey">Monkey</option>
+						      			<option value="Ram">Ram</option>
+						      			<option value="Dragon">Dragon</option>
+					      			</select>
+						    	</div>
+						    	<label for="stateFilter" class="col-sm-2 control-label">state</label>
+							    <div class="col-sm-4">
+						      		<select class="form-control" id="stateFilter" ng-model="searchState">
+						      			<option value="open">open</option>
+						      			<option value="playing">playing</option>
+						      			<option value="finished">finished</option>
+					      			</select>
+						    	</div>
+						  	</div>
+						  	<br/>
+							<div class="form-group">
+								<label for="searchName" class="col-sm-2 control-label">Creator</label>
+							    <div class="col-sm-4">
+						      		<input type="text" id="searchName" class="form-control" ng-model="searchName"></input>
+						    	</div>
+							    <div class="col-sm-6"></div>
+							</div>
+						  	<br/>
+							<div class="form-group">
+								<div class="col-sm-2"></div>
+							    <div class="col-sm-4">
+							    	<input type="submit" class="form-control btn-primary" value="Search"></input>
+							    </div>
+							    <div class="col-sm-2"></div>
+							    <div>
+							    	<a href="#" ng-click="reset()" class="btn btn-default">Reset</a>
+							    </div>
+							</div>
+						</form>
 						<table class="table table-hover" ng-if="!loading">
 							<thead>
 								<tr>
@@ -16,7 +65,7 @@
 								</tr>
 							</thead>
 							<tbody>				
-								<tr class="{{(game.state == 'open' && (game.players.length + 1 < game.maxPlayers) ? 'success' : 'warning')}}" ng-repeat="game in games | orderBy: 'game.maxPlayers'">
+								<tr class="{{(game.state == 'open' && (game.players.length + 1 < game.maxPlayers) ? 'success' : 'warning')}}" ng-repeat="game in games | orderBy: 'game.maxPlayers'" ng-mouseover="expandInfo(game)">
 									<td>{{game.createdBy.name}}</td>
 									<td>{{game.players.length + 1}}/{{game.maxPlayers}}</td>
 									<td>{{game.gameTemplate.id}}</td>
@@ -25,10 +74,30 @@
 										<a href="#/games/{{game.id}}" class="btn btn-primary btn-xs" ng-hide="game.state!='finished'" ng-click="joinGame(game)">View</a>
 										<a href="" class="btn btn-default btn-xs" ng-hide="game.state=='finished' || (game.players.length + 1) >= game.maxPlayers" ng-click="joinGame(game)">Join</a>
 									</td>
-								</tr>					
+								</tr>			
 							</tbody>
 						</table>
-						<a class="btn {{showCreate ? 'btn-default' : 'btn-primary'}}" href="#createForm" du-smooth-scroll ng-click="showCreate=!showCreate">{{showCreate ? 'Cancel' : 'Create Game'}}</a>
+					      <div class="panel-footer">
+					        <ul class="pagination pagination-sm">
+					          <li><a href="#/games/1">«</a></li>
+					          <li class="active"><a href="#/recipes/{{pageNum}}">{{i = pageNum}}</a></li>
+					          <li><a href="#/games/{{+i + +num}}" ng-repeat="num in [1,2,3,4,5,6,7,8,9]">{{+i + +num}}</a></li>
+					        </ul>
+					        <div class="pull-right">Showing {{pageNum * pageEntryNum - pageEntryNum}} to {{(pageNum * pageEntryNum) + +pageEntryum}} of {{recipes.totalMatchCount}} entries</div>
+					      </div>
+						
+					</div>
+				</div>
+				<div class="col-md-1">
+					<h4>Players</h4>
+					<span ng-repeat="player in curGame.players">{{player.name}}</span>
+				</div>
+				<div class="col-md-4"></div>
+			</div>
+			<div class="row">
+				<div class="col-md-3"></div>
+				<div class="col-md-5">
+					<a class="btn {{showCreate ? 'btn-default' : 'btn-primary'}}" href="#createForm" du-smooth-scroll ng-click="showCreate=!showCreate">{{showCreate ? 'Cancel' : 'Create Game'}}</a>
 						<div ng-show="showCreate" id="createForm">
 							<div class="col-md-12">
 								View template examples:
@@ -61,8 +130,8 @@
 							  	<input type="submit" class="btn btn-primary" value="Create" ng-click="alert('a')"/>
 							</form>
 						</div>
-					</div>
+
 				</div>
 				<div class="col-md-4"></div>
 			</div>
-		</div>
+</div>

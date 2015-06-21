@@ -44,8 +44,12 @@ angular.module('webs6').service('GameService', function($http){
 	};
 	*/
 
-	this.getGames =  function(){
-		return $http.get('http://mahjongmayhem.herokuapp.com/games').
+	this.getGames =  function(maxResult, start, searchTerm){
+		var query =  '?pageSize=' + maxResult + '&pageIndex=' + start;
+		if(searchTerm && searchTerm != null && searchTerm.length > 0){
+			query = query + searchTerm;
+		}
+		return $http.get('http://mahjongmayhem.herokuapp.com/games' + query).
 	    success(function(data, status, headers, config) {
 	    }).
 	    error(function(data, status, headers, config) {
