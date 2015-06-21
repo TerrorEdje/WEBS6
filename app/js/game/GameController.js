@@ -1,9 +1,9 @@
-angular.module('webs6').controller('GameController', function(GameService, UserService, $http, $scope, $routeParams){
-      $scope.game = {name: "Mahjong Mayhem", minPlayers: "-", maxPlayers: "-", state:"template", createdBy: {name: "Mahjong Mayhem"}, gameTemplate: {_id:$routeParams.gameId}};
-	$scope.gameId = $routeParams.gameId;
-	$scope.rows;
+angular.module('webs6').controller('GameController', function(GameService, UserService, $http, $scope, $stateParams){
+      $scope.game = {name: "Mahjong Mayhem", minPlayers: "-", maxPlayers: "-", state:"template", createdBy: {name: "Mahjong Mayhem"}, gameTemplate: {_id:$stateParams.gameId}};
+	$scope.gameId = $stateParams.gameId;
+	$scope.tiles;
       $scope.loadingInfo = true;
-      $scope.loadignTiles = true;
+      $scope.loadingTiles = true;
       $scope.loading = true;
 
       $scope.matchTile = null;
@@ -16,36 +16,12 @@ angular.module('webs6').controller('GameController', function(GameService, UserS
                   $scope.loadingInfo = false;
                   checkLoading();
       	});
-      	this.getRows();
-	}
-
-	this.getRows = function()
-	{
-		GameService.getGameTiles($scope.gameId).then(function(response){
-      		var tiles = response.data;
-      		var rows = [];
-      		var xMax = 0; var yMax = 0;
-      		for (var i = tiles.length - 1; i >= 0; i--) {
-      			var tile = tiles[i];
-      			if(tile.xPos > xMax) {xMax = tile.xPos}
-      			if(tile.yPos > yMax) {yMax = tile.yPos}
-      		};
-      		for ( var i = 0; i < yMax; i++ ){ 
-      			rows[i] = [];
-      			for(var j = 0; j < xMax; j++){
-      				rows[i][j] = [];
-      			}
-      		}
-      		for (var i = tiles.length - 1; i >= 0; i--) {
-      			var tile = tiles[i];
-      			rows[tile.yPos - 1][tile.xPos - 1][tile.zPos] = tile;
-      		};
-      		$scope.rows = rows;
-                  console.log($scope.rows); 
-                  $scope.loadignTiles = false;
+            GameService.getGameTiles(gamesCtrl.gameId).then(function(response){
+                  gamesCtrl.tiles = response.data;
+                  $scope.loadingTiles = false;
                   checkLoading();
-      	});
-	}
+            });	
+      }
 	this.init();
 
       $scope.match = function(tile)
@@ -61,22 +37,8 @@ angular.module('webs6').controller('GameController', function(GameService, UserS
 
                   ){
                         console.log('match!');
-                        var rows = $scope.rows;
-                        var zRow1 = rows[matchTile.yPos - 1][matchTile.xPos - 1]; 
-                        var zRow2 = rows[tile.yPos - 1][tile.xPos - 1]; 
-                        if(zRow1.length > 1)
-                        {
-                              rows[matchTile.yPos - 1][matchTile.xPos - 1].splice(matchTile.zPos - 1, 1);
-                        }else{
-                              rows[matchTile.yPos - 1][matchTile.xPos - 1] = [];
-                        }
-
-                        if(zRow2.length > 1)
-                        {
-                              rows[tile.yPos - 1][tile.xPos - 1].splice(tile.zPos - 1, 1);
-                        }else{
-                              rows[tile.yPos - 1][tile.xPos - 1] = []
-                        }
+                        removeTile(tile._id);
+                        removeTile(matchTile._id);
                         
                   }else{
                         console.log('no match!')
@@ -92,5 +54,14 @@ angular.module('webs6').controller('GameController', function(GameService, UserS
             {
                   $scope.loading = false;
             }
+      }
+      function removeTile(id){
+            for (var i = $scope.tiles.length - 1; i >= 0; i--) {
+                  var tile = $scope.tiles[i];
+                  if(tile._id == id)
+                  {
+                        $scope.tiles.splice(i, 1);
+                  }
+            };
       }
 });

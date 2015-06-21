@@ -12,11 +12,9 @@ angular.module('webs6').controller('GameListController', function(GameService, U
 	}
 
 	this.addGame = function(){
-		var game = this.game;
-		game.createdBy = UserService.player;
-		game.createdOn = Date.now();
-		game.state = 'open';
-		GameService.addGame(game);
+		console.log('abc');
+		console.log(game);
+		//GameService.addGame(game);
 	};
 
 	this.joinGame = function(game){

@@ -1,87 +1,40 @@
 angular.module('webs6').service('GameService', function($http){
-	this.games = [
-		{
-		 "layout": "shanghai", // -> 'shanghai'|'snake'|'ox'|'ram'|'dragon'|'rooster'|'monkey'
-		 "createdOn": "date", // date + time
-		 "startedOn": "date", // date + time
-		 "id": "1",
-		 "endedOn": "date", // date + time
-		 "createdBy": {
-		   "id": "yahegge", // Avans username
-		   "name": "Yannik Hegge", // fullname
-		   "email": "yannikhegge@gmail.com", // avans e-mail
-		   "nickname": "yahegge" // maybe filled later?
-		 },
-		 "minPlayers": "2", // 35 <= x >= 1, Required number of players to start
-		 "maxPlayers": "3",  // 35 <= x >= 1
-		 "players": [{
-		   "id": "egjhattink", // Avans username
-		   "name": "Edwin Hattink", // fullname
-		   "email": "edwin@hattink.io", // avans e-mail
-		   "nickname": "TERROR_EDJE" // maybe filled later?
-		   // Properties like score and isWinner maybe filled later
-		 }],
-		 "state": "open" // -> 'open'|'playing'|'finished'
-		},
-		{
-		 "layout": "dragon", // -> 'shanghai'|'snake'|'ox'|'ram'|'dragon'|'rooster'|'monkey'
-		 "createdOn": "date", // date + time
-		 "startedOn": "date", // date + time
-		 "id": "2",
-		 "endedOn": "date", // date + time
-		 "createdBy": {
-		   "id": "egjhattink", // Avans username
-		   "name": "Edwin Hattink", // fullname
-		   "email": "edwin@hattink.io", // avans e-mail
-		   "nickname": "TERROR_EDJE" // maybe filled later?
-		   // Properties like score and isWinner maybe filled later
-		 },
-		 "minPlayers": "2", // 35 <= x >= 1, Required number of players to start
-		 "maxPlayers": "15",  // 35 <= x >= 1
-		 "players": [{
-		   "id": "yahegge", // Avans username
-		   "name": "Yannik Hegge", // fullname
-		   "email": "yannikhegge@gmail.com", // avans e-mail
-		   "nickname": "yahegge" // maybe filled later?
-		 },
-		 {
-		   "id": "hehenkson", // Avans username
-		   "name": "Henk Henkson", // fullname
-		   "email": "henkhenkson@gmail.com", // avans e-mail
-		   "nickname": "hehehenk" // maybe filled later?
-		 }],
-		 "state": "finished" // -> 'open'|'playing'|'finished'
-		},
-		{
-		 "layout": "ox", // -> 'shanghai'|'snake'|'ox'|'ram'|'dragon'|'rooster'|'monkey'
-		 "createdOn": "date", // date + time
-		 "startedOn": "date", // date + time
-		 "id": "3",
-		 "endedOn": "date", // date + time
-		 "createdBy": {
-		   "id": "egjhattink", // Avans username
-		   "name": "Edwin Hattink", // fullname
-		   "email": "edwin@hattink.io", // avans e-mail
-		   "nickname": "TERROR_EDJE" // maybe filled later?
-		   // Properties like score and isWinner maybe filled later
-		 },
-		 "minPlayers": "2", // 35 <= x >= 1, Required number of players to start
-		 "maxPlayers": "5",  // 35 <= x >= 1
-		 "players": [{
-		   "id": "yahegge", // Avans username
-		   "name": "Yannik Hegge", // fullname
-		   "email": "yannikhegge@gmail.com", // avans e-mail
-		   "nickname": "yahegge" // maybe filled later?
-		 }],
-		 "state": "finished" // -> 'open'|'playing'|'finished'
-		}
-	];
 
-	this.addGame = function(game)
+	this.addGame = function(template, min, max)
 	{
-		this.games.push(game);
+		var game = {
+			"templateName": template,
+			"minPlayers": min,
+			"maxPlayers": max
+		}
+		if(this.validateGame(game))
+		{
+			this.postGame(game);
+		}else{
+			alert("error in game format: game validation failed")
+		}
+	}
+
+	this.validateGame = function(game)
+	{
+		if(game.templateName != null && game.minPlayers > 0 && game.maxPlayers <= 100){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	this.postGame = function(game)
+	{
+		return $http.post('http://mahjongmayhem.herokuapp.com/games', game).
+	    success(function(data, status, headers, config) {
+	    }).
+	    error(function(data, status, headers, config) {
+	     	alert('error in api request');
+	    });
 	};
 
+	/*
 	this.joinGame = function(player, game)
 	{
 		if(game.maxPlayers > game.players.length + 1)
@@ -89,6 +42,7 @@ angular.module('webs6').service('GameService', function($http){
 			game.players.push(player);	
 		}
 	};
+	*/
 
 	this.getGames =  function(){
 		return $http.get('http://mahjongmayhem.herokuapp.com/games').

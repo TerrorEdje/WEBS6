@@ -28,15 +28,15 @@
 								</tr>					
 							</tbody>
 						</table>
-						<a class="btn {{showCreate ? 'btn-default' : 'btn-primary'}}" href="#create" du-smooth-scroll ng-click="showCreate=!showCreate">{{showCreate ? 'Cancel' : 'Create Game'}}</a>
-						<div ng-show="showCreate" id="create">
+						<a class="btn {{showCreate ? 'btn-default' : 'btn-primary'}}" href="#createForm" du-smooth-scroll ng-click="showCreate=!showCreate">{{showCreate ? 'Cancel' : 'Create Game'}}</a>
+						<div ng-show="showCreate" id="createForm">
 							<div class="col-md-12">
 								View template examples:
 								<a href="#/template/shanghai">shanghai</a> | <a href="#/template/rooster">rooster</a> | <a href="#/template/snake">snake</a> | <a href="#/template/monkey">monkey</a> | <a href="#/template/ox">ox</a> | <a href="#/template/ram">ram</a> | <a href="#/template/dragon">dragon</a>
 							<br/>{{game.layout}} {{game.minPlayers}} {{game.maxPlayers}}<br/>
 							</div>
 							
-							<form class="form-horizontal" ng-submit="addGame()">
+							<form class="form-horizontal" ng-submit="addGame()" ng-model="game">
 								<div class="form-group">
 							    	<label for="layoutSelect" class="col-sm-2 control-label">Layout</label>
 								    <div class="col-sm-10">
@@ -58,7 +58,7 @@
 							      		<input type="number" class="form-control" id="maxPlayers" ng-model="game.maxPlayers"></input>
 							    	</div>
 							  	</div>
-							  	<button type="submit" class="btn btn-primary">Create</button>
+							  	<input type="submit" class="btn btn-primary" value="Create" ng-click="alert('a')"/>
 							</form>
 						</div>
 					</div>

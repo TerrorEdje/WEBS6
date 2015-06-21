@@ -24,19 +24,10 @@
 		<div class="starter-template">
 			<div class="col-md-10">
 				<loader></loader>
-				<table class="gametable" ng-if="!loading">
-					<thead></thead>
-					<tbody>
-						<tr ng-repeat="row in rows">
-							<td ng-repeat="vertRow in row track by $index" class="{{vertRow.length > 0 ? 'success' : ''}}">
-								<div ng-show="vertRow.length > 0">
-									<img class="tile {{vertRow[vertRow.length - 1].tile.suit}} t_{{vertRow[vertRow.length - 1].tile.name}}"
-									src="//:0" ng-click="match(vertRow[vertRow.length - 1])"></img>
-								</div>
-							</td>
-						</tr>
-					</tbody>
-				</table>
+				<div class="gametable" ng-if="!loading">
+					<div class="tile {{tile.tile.suit}} t_{{tile.tile.name}} x-{{tile.xPos}} y-{{tile.yPos}} z-{{tile.zPos}}" ng-repeat="tile in tiles" ng-click="match(tile)">
+					</div>
+				</div>
 			</div>
 			<div class="col-md-2">
 				<h3>Players</h3>

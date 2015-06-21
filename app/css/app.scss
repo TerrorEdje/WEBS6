@@ -32,7 +32,26 @@
 	min-height:45px;
 }
 
+@mixin renderGrid() {
+  $i: 1;
+  @while $i <= 30 {
+    .x-#{$i} {
+      left: $i*18px;
+    }
+    .y-#{$i} {
+      top: $i*23px;
+    }
+    .z-#{$i} {
+      z-index: $i;
+    }
+    $i: $i+1;
+  }
+}
+
+@include renderGrid();
+
 .tile {
+	position:absolute;
 	width: 36px;
 	height:45px;
 	background-image: url('./res/tiles.png');
@@ -94,3 +113,5 @@
 .tile.wind.t_South {background-position: -365px 0px;}
 .tile.wind.t_East {background-position: -402px 0px;}
 .tile.wind.t_West {background-position: -439px 0px;}
+
+/*TILE POSITIONING*/

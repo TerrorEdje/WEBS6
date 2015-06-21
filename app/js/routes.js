@@ -10,17 +10,15 @@ angular.module('webs6').config(function($stateProvider, $urlRouterProvider) {
       templateUrl: 'views/game-list.html',
         controller  : 'GameListController'
     })
-
     .state('game-detail', {
-    	url: 'games/:gameId',
+    	url: '/games/:gameId',
     	templateUrl: 'views/game-detail.html',
     	controller: 'GameController'
     })
-
-    .state('template-layout', {
-    	url: 'template/:layout',
+    .state('game-layout', {
+    	url: '/template/:layout',
     	templateUrl: 'views/game-detail.html',
     	controller: 'GameTemplateController'
-    });
+    })
 
 });
