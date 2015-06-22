@@ -6,6 +6,9 @@ angular.module('webs6').controller('LoginController', function(UserService, $htt
             $cookies.put('username',username);
             $cookies.put('token',token);
             console.log(token);
+            console.log($cookies.get('username'));
+            UserService.name = username;
+            UserService.token = token;
             //$window.location.href = '/#/list/1';
       }
 

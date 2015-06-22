@@ -68,12 +68,12 @@ angular.module('webs6').controller('GameListController', function(GameService, U
 
 	$scope.participating = function(game)
 	{
-		if(game.createdBy.name == UserService.player.name){
+		if(game.createdBy.name == UserService.name){
 			return true;
 		}
 		for (var i = game.players.length - 1; i >= 0; i--) {
 			var player = game.players[i].name;
-			if(UserService.player.name == player)
+			if(UserService.name == player)
 			{
 				return true;
 			}
