@@ -30,15 +30,16 @@ angular.module('webs6').service('GameService', function($http){
 	    });
 	};
 
-	/*
-	this.joinGame = function(player, game)
+	this.joinGame = function(game)
 	{
-		if(game.maxPlayers > game.players.length + 1)
-		{
-			game.players.push(player);	
-		}
+		console.log(game);
+		return $http.post('http://mahjongmayhem.herokuapp.com/games/' + game.id + '/players').
+	    success(function(data, status, headers, config) {
+	    }).
+	    error(function(data, status, headers, config) {
+	     	alert('error in api request');
+	    });
 	};
-	*/
 
 	this.getGames =  function(maxResult, start, searchTerm){
 		var query =  '?pageSize=' + maxResult + '&pageIndex=' + start;
