@@ -30,6 +30,16 @@ angular.module('webs6').service('GameService', function($http){
 	    });
 	};
 
+	this.startGame = function(game)
+	{
+		return $http.post('http://mahjongmayhem.herokuapp.com/games/' + game.id + '/start').
+	    success(function(data, status, headers, config) {
+	    }).
+	    error(function(data, status, headers, config) {
+	     	alert('error in api request');
+	    });
+	}
+
 	this.joinGame = function(game)
 	{
 		console.log(game);

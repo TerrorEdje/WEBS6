@@ -67,7 +67,7 @@
 							<tbody>				
 								<tr class="{{(game.state == 'open' && (game.players.length + 1 < game.maxPlayers) ? 'success' : 'warning')}}" ng-repeat="game in games | orderBy: 'game.maxPlayers'" ng-mouseover="expandInfo(game)">
 									<td>{{game.createdBy.name}}</td>
-									<td>{{game.players.length + 1}}/{{game.maxPlayers}}</td>
+									<td>{{game.players.length}}/{{game.maxPlayers}}</td>
 									<td>{{game.gameTemplate.id}}</td>
 									<td>{{game.state}}</td>
 									<td>
