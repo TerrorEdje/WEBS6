@@ -105,11 +105,11 @@
 							<br/>{{game.layout}} {{game.minPlayers}} {{game.maxPlayers}}<br/>
 							</div>
 							
-							<form class="form-horizontal" ng-submit="addGame()" ng-model="game">
+							<form class="form-horizontal" ng-submit="addGame(game)" ng-model="game">
 								<div class="form-group">
 							    	<label for="layoutSelect" class="col-sm-2 control-label">Layout</label>
 								    <div class="col-sm-10">
-							      		<select class="form-control" id="layoutSelect" ng-model="game.layout">
+							      		<select class="form-control" id="layoutSelect" ng-model="game.templateName">
 							      			<option value="Ox">Ox</option>
 							      			<option value="shanghai">shanghai</option>
 						      			</select>

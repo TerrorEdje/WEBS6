@@ -1,22 +1,18 @@
 angular.module('webs6').service('GameService', function($http){
 
-	this.addGame = function(template, min, max)
+	this.addGame = function(game)
 	{
-		var game = {
-			"templateName": template,
-			"minPlayers": min,
-			"maxPlayers": max
-		}
 		if(this.validateGame(game))
 		{
 			this.postGame(game);
 		}else{
-			alert("error in game format: game validation failed")
+			alert("error in game format: game validation failed");
 		}
 	}
 
 	this.validateGame = function(game)
 	{
+		console.log(game);
 		if(game.templateName != null && game.minPlayers > 0 && game.maxPlayers <= 100){
 			return true;
 		}else{

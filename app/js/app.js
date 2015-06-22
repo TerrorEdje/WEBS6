@@ -7,6 +7,22 @@ require('angular-cookies/angular-cookies');
 // Create your app
 var app = angular.module('webs6', ['ui.router','ngCookies', 'duScroll']);
 
+app.factory('httpRequestInterceptor', function($cookies) {
+  return {
+    request: function (config) {
+        config.headers['Content-Type'] = 'application/json';
+		config.headers['x-username'] = $cookies.get('username');
+        config.headers['x-token'] = $cookies.get('token');
+    	
+      	return config;
+    }
+  };
+});
+
+app.config(function($httpProvider) {
+  $httpProvider.interceptors.push('httpRequestInterceptor');
+});
+
 require('./login/LoginController.js');
 
 //home screen imports

@@ -8,16 +8,13 @@ angular.module('webs6').controller('GameListController', function(GameService, U
 	$scope.searchState;
 	$scope.searchLayout;
 	$scope.searchName;
-	console.log("UserService: " + UserService.username);
 	this.init = function()
 	{ 
 		$scope.populate('');
 	}
 
-	$scope.addGame = function(){
-		console.log('abc');
-		console.log(game);
-		//GameService.addGame(game);
+	$scope.addGame = function(game){
+		GameService.addGame(game);
 	};
 
 	this.joinGame = function(game){
