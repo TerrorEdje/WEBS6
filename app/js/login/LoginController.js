@@ -1,12 +1,12 @@
-angular.module('webs6').controller('LoginController', function(UserService, $http, $scope, $stateParams,$window){
+angular.module('webs6').controller('LoginController', function(UserService, $http, $scope, $stateParams,$window,$cookies){
       var username = $stateParams.username;
       var token = $stateParams.token;
       
-      console.log(UserService);
       if (username != undefined && token != undefined) {
-            UserService.username = username;
-            UserService.token = token;
-            $window.location.href = '/';
+            $cookies.put('username',username);
+            $cookies.put('token',token);
+            console.log(token);
+            //$window.location.href = '/#/list/1';
       }
 
       $scope.launchLogin = function () {

@@ -1,4 +1,4 @@
-angular.module('webs6').controller('GameController', function(GameService, UserService, $http, $scope, $stateParams){
+angular.module('webs6').controller('GameController', function(GameService, UserService, $http, $scope, $stateParams,$cookies){
       $scope.game = {name: "Mahjong Mayhem", minPlayers: "-", maxPlayers: "-", state:"template", createdBy: {name: "Mahjong Mayhem"}, gameTemplate: {_id:$stateParams.gameId}};
 	$scope.gameId = $stateParams.gameId;
 	$scope.tiles;

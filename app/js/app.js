@@ -2,9 +2,10 @@ require('angular/angular');
 require('angular-route/angular-route');
 require('angular-scroll/angular-scroll');
 require('angular-ui-router/release/angular-ui-router');
+require('angular-cookies/angular-cookies');
 
 // Create your app
-var app = angular.module('webs6', ['ui.router', 'duScroll']);
+var app = angular.module('webs6', ['ui.router','ngCookies', 'duScroll']);
 
 require('./login/LoginController.js');
 

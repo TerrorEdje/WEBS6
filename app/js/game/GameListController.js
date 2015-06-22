@@ -1,4 +1,4 @@
-angular.module('webs6').controller('GameListController', function(GameService, UserService, $http, $scope, $rootScope, $stateParams){
+angular.module('webs6').controller('GameListController', function(GameService, UserService,$cookies, $http, $scope, $rootScope, $stateParams){
 	this.games;
 	this.game = {"layout": "Ox", "minPlayers":2, "maxPlayers":3};
 	$scope.loading = true;
@@ -8,7 +8,7 @@ angular.module('webs6').controller('GameListController', function(GameService, U
 	$scope.searchState;
 	$scope.searchLayout;
 	$scope.searchName;
-	console.log(UserService);
+	console.log("UserService: " + UserService.username);
 	this.init = function()
 	{ 
 		$scope.populate('');
