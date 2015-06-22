@@ -8,6 +8,7 @@ angular.module('webs6').controller('GameListController', function(GameService, U
 	$scope.searchState;
 	$scope.searchLayout;
 	$scope.searchName;
+	var username = $cookies.get('username');
 	this.init = function()
 	{ 
 		$scope.populate('');
@@ -17,12 +18,41 @@ angular.module('webs6').controller('GameListController', function(GameService, U
 		GameService.addGame(game);
 	};
 
-	this.joinGame = function(game){
+	$scope.joinGame = function(game){
 		console.log(game);
 		GameService.joinGame(game);
 	}
 
-	this.startGame = function(game){
+	$scope.canJoin = function(game) {
+		if (game.state != 'open') {
+			return false;
+		}
+		if (game.players.length >= game.maxPlayers) {
+			return false;
+		}
+		for (i = 0; i < game.players.length; i++) {
+			if (game.players[i]._id == username) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	$scope.canStart = function(game) {
+		if (game.state != 'open') {
+			return false;
+		}
+		if (game.players.length < game.minPlayers)
+		{
+			return false;
+		}
+		if (game.createdBy._id != username) {
+			return false;
+		}
+		return true;
+	}
+
+	$scope.startGame = function(game){
 		console.log(game);
 		GameService.startGame(game);
 	}

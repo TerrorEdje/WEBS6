@@ -36,6 +36,7 @@ angular.module('webs6').service('GameService', function($http){
 	    success(function(data, status, headers, config) {
 	    }).
 	    error(function(data, status, headers, config) {
+	    	console.log(data);
 	     	alert('error in api request');
 	    });
 	}
@@ -47,6 +48,7 @@ angular.module('webs6').service('GameService', function($http){
 	    success(function(data, status, headers, config) {
 	    }).
 	    error(function(data, status, headers, config) {
+	    	console.log(data);
 	     	alert('error in api request');
 	    });
 	};
