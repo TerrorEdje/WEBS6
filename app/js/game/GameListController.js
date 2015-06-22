@@ -8,6 +8,7 @@ angular.module('webs6').controller('GameListController', function(GameService, U
 	$scope.searchState;
 	$scope.searchLayout;
 	$scope.searchName;
+	console.log(UserService);
 	this.init = function()
 	{ 
 		$scope.populate('');
