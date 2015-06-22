@@ -5,9 +5,7 @@ angular.module('webs6').controller('GameController', function(GameService, UserS
       $scope.loadingInfo = true;
       $scope.loadingTiles = true;
       $scope.loading = true;
-
       $scope.matchTile = null;
-
 	this.init = function()
 	{ 
 		var gamesCtrl = $scope;

@@ -8,7 +8,7 @@ angular.module('webs6').config(function($stateProvider, $urlRouterProvider) {
     .state('games', {
       url: '/games/:page',
       templateUrl: 'views/game-list.html',
-        controller  : 'GameListController'
+      controller  : 'GameListController'
     })
     .state('game-detail', {
     	url: '/games/:gameId',
@@ -19,6 +19,11 @@ angular.module('webs6').config(function($stateProvider, $urlRouterProvider) {
     	url: '/template/:layout',
     	templateUrl: 'views/game-detail.html',
     	controller: 'GameTemplateController'
+    })
+    .state('login-callback', {
+      url: '/login/callback?username&token',
+      templateUrl: 'views/login.html',
+      controller: 'LoginController'
     })
 
 });
