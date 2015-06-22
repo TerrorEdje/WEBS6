@@ -14,6 +14,9 @@
 				<li ng-controller="LoginController" ng-hide="user">
 					<a href="#" ng-click="launchLogin()">Login</a>
 				</li>
+				<li ng-controller="LoginController" ng-show="user">
+					<a href="#" ng-click="logout()">Logout {{ user.username }}</a>
+				</li>
 			</ul>
 		</div>
 		<div ui-view></div>
