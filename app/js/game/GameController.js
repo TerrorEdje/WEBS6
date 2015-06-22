@@ -24,27 +24,31 @@ angular.module('webs6').controller('GameController', function(GameService, UserS
 
       $scope.match = function(tile)
       {
-            var matchTile = $scope.matchTile;
-            console.log(tile);
-            if(matchTile != null)
-            {
-                  if(
-                        ((matchTile.tile.matchesWholeSuit && matchTile.tile.suit == tile.tile.suit) 
-                         || (matchTile.tile.suit == tile.tile.suit && matchTile.tile.name == tile.tile.name))
-                        &&(matchTile.tile != tile.tile)
+            console.log(canMatch(tile));
+            if(canMatch(tile)){
+                  var matchTile = $scope.matchTile;
+                  console.log(tile);
+                  if(matchTile != null)
+                  {
+                        if(
+                              ((matchTile.tile.matchesWholeSuit && matchTile.tile.suit == tile.tile.suit) 
+                               || (matchTile.tile.suit == tile.tile.suit && matchTile.tile.name == tile.tile.name))
+                              &&(matchTile.tile != tile.tile)
 
-                  ){
-                        console.log('match!');
-                        removeTile(tile._id);
-                        removeTile(matchTile._id);
-                        
+                        ){
+                              console.log('match!');
+                              removeTile(tile._id);
+                              removeTile(matchTile._id);
+                              
+                        }else{
+                              console.log('no match!')
+                        }
+                        $scope.matchTile = null;
                   }else{
-                        console.log('no match!')
+                        $scope.matchTile = tile;
                   }
-                  $scope.matchTile = null;
-            }else{
-                  $scope.matchTile = tile;
             }
+            
       }
 
       function checkLoading(){
@@ -61,5 +65,24 @@ angular.module('webs6').controller('GameController', function(GameService, UserS
                         $scope.tiles.splice(i, 1);
                   }
             };
+      }
+
+      function canMatch(tile){
+            var z = tile.zPos;
+            var x = tile.xPos;
+            var y = tile.yPos;
+            for (var i = $scope.tiles.length - 1; i >= 0; i--) {
+                  var curTile = $scope.tiles[i];
+                  if(curTile.zPos > z)
+                  {
+                        if(
+                              (curTile.xPos == x + 1 || curTile.xPos == x - 1)&&
+                              (curTile.yPos == y + 1 || curTile.yPos == y - 1)
+                        ){
+                              return false;
+                        }
+                  }
+            };
+            return true;
       }
 });
