@@ -22,6 +22,11 @@ angular.module('webs6').controller('GameListController', function(GameService, U
 		GameService.joinGame(game);
 	}
 
+	this.startGame = function(game){
+		console.log(game);
+		GameService.startGame(game);
+	}
+
 	$scope.expandInfo = function(game){
 		$scope.curGame = game;
 	}
