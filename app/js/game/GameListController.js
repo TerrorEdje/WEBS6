@@ -38,7 +38,15 @@ angular.module('webs6').controller('GameListController', function(GameService, U
 
 	$scope.search = function()
 	{
-		var query = '&state=' + $scope.searchState + '&gameTemplate=' + $scope.searchLayout;
+		var query;
+		if($scope.searchLayout != null)
+		{
+			query = query + '&gameTemplate=' + $scope.searchLayout;
+		}
+		if($scope.searchState != null)
+		{
+			query = query + '&state=' + $scope.searchState;
+		}
 		console.log(query);
 		$scope.populate(query);
 	}
@@ -54,8 +62,22 @@ angular.module('webs6').controller('GameListController', function(GameService, U
 
 	$scope.reset = function()
 	{
-		console.log('a');
 		$scope.populate('');
+	}
+
+	$scope.participating = function(game)
+	{
+		if(game.createdBy.name == UserService.player.name){
+			return true;
+		}
+		for (var i = game.players.length - 1; i >= 0; i--) {
+			var player = game.players[i].name;
+			if(UserService.player.name == player)
+			{
+				return true;
+			}
+		};
+		return false;
 	}
 
 	this.init();

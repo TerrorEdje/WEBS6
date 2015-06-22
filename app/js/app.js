@@ -6,6 +6,9 @@ require('angular-ui-router/release/angular-ui-router');
 // Create your app
 var app = angular.module('webs6', ['ui.router', 'duScroll']);
 
+//generic imports
+require('./homeController.js');
+
 //home screen imports
 require('./game/GameListDirectives.js');
 require('./game/GameListController.js');

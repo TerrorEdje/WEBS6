@@ -1,12 +1,12 @@
 angular.module('webs6').config(function($stateProvider, $urlRouterProvider) {
   //
   // For any unmatched url, redirect to /state1
-  $urlRouterProvider.otherwise("/games/1");
+  $urlRouterProvider.otherwise("/list/1");
   //
   // Now set up the states
   $stateProvider
     .state('games', {
-      url: '/games/:page',
+      url: '/list/:page',
       templateUrl: 'views/game-list.html',
         controller  : 'GameListController'
     })
