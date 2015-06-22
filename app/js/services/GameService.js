@@ -92,4 +92,15 @@ angular.module('webs6').service('GameService', function($http){
 	     	alert('error in api request');
 	    });
 	}
+
+	this.postGameTiles = function(game,tile1,tile2) {
+		var tiles = { tile1Id: tile1._id, tile2Id: tile2._id };
+		return $http.post('http://mahjongmayhem.herokuapp.com/games/' + game._id + '/tiles/matches',tiles).
+	    success(function(data, status, headers, config) {
+	    }).
+	    error(function(data, status, headers, config) {
+	    	console.log(data);
+	     	alert('error in api request');
+	    });
+	}
 });

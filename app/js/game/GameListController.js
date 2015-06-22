@@ -38,6 +38,18 @@ angular.module('webs6').controller('GameListController', function(GameService, U
 		return true;
 	}
 
+	$scope.canView = function(game) {
+		if (game.state == 'playing') {
+			for (var i = game.players.length - 1; i >= 0; i--) {
+				if(username == game.players[i]._id)
+				{
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
 	$scope.canStart = function(game) {
 		if (game.state != 'open') {
 			return false;
@@ -97,21 +109,6 @@ angular.module('webs6').controller('GameListController', function(GameService, U
 	$scope.reset = function()
 	{
 		$scope.populate('');
-	}
-
-	$scope.participating = function(game)
-	{
-		if(game.createdBy.name == UserService.name){
-			return true;
-		}
-		for (var i = game.players.length - 1; i >= 0; i--) {
-			var player = game.players[i].name;
-			if(UserService.name == player)
-			{
-				return true;
-			}
-		};
-		return false;
 	}
 
 	this.init();

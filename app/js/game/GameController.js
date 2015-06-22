@@ -36,6 +36,7 @@ angular.module('webs6').controller('GameController', function(GameService, UserS
                               &&(matchTile.tile != tile.tile)
 
                         ){
+                              GameService.postGameTiles($scope.game,tile,matchTile);
                               console.log('match!');
                               removeTile(tile._id);
                               removeTile(matchTile._id);
@@ -47,8 +48,7 @@ angular.module('webs6').controller('GameController', function(GameService, UserS
                   }else{
                         $scope.matchTile = tile;
                   }
-            }
-            
+            }            
       }
 
       function checkLoading(){

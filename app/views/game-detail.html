@@ -25,7 +25,7 @@
 			<div class="col-md-10">
 				<loader></loader>
 				<div class="gametable" ng-if="!loading">
-					<div class="tile {{tile.tile.suit}} t_{{tile.tile.name}} x-{{tile.xPos}} y-{{tile.yPos}} z-{{tile.zPos}}" ng-repeat="tile in tiles" ng-click="match(tile)">
+					<div class="tile {{tile.tile.suit}} t_{{tile.tile.name}} x-{{tile.xPos}} y-{{tile.yPos}} z-{{tile.zPos}}" ng-hide="tile.match" ng-repeat="tile in tiles" ng-click="match(tile)">
 					</div>
 				</div>
 			</div>

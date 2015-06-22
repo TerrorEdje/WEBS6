@@ -71,7 +71,7 @@
 									<td>{{game.gameTemplate.id}}</td>
 									<td>{{game.state}}</td>
 									<td>
-										<a href="#/games/{{game.id}}" class="btn btn-primary btn-xs" ng-hide="game.state!='finished'" ng-show="participating(game)">View</a>
+										<a href="#/games/{{game.id}}" class="btn btn-primary btn-xs" ng-show="canView(game)">View</a>
 										<a href="" class="btn btn-default btn-xs" ng-show="canJoin(game)" ng-click="joinGame(game)">Join</a>
 										<a href="" class="btn btn-default btn-xs" ng-show="canStart(game)" ng-click="startGame(game)">Start</a>
 									</td>
