@@ -4,7 +4,7 @@ angular.module('webs6').service('GameService', function($http){
 	{
 		if(this.validateGame(game))
 		{
-			this.postGame(game);
+			return this.postGame(game);
 		}else{
 			alert("error in game format: game validation failed");
 		}
