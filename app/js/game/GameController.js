@@ -7,6 +7,7 @@ angular.module('webs6').controller('GameController', function(GameService, UserS
       $scope.loading = true;
       $scope.waiting = true;
       $scope.matchTile = null;
+      $scope.playing = false;
 	this.init = function()
 	{ 
 
@@ -25,6 +26,11 @@ angular.module('webs6').controller('GameController', function(GameService, UserS
                   if(gamesCtrl.game.state != 'open')
                   {
                         gamesCtrl.waiting = false;
+                        if(gamesCtrl.state != 'finished')
+                        {
+                        	gamesCtrl.playing = false;
+                        }
+                        gamesCtrl.playing = true;
                         loadTiles();
                   }
             });
@@ -78,15 +84,16 @@ angular.module('webs6').controller('GameController', function(GameService, UserS
             });
 
             socket.on('start', function() {
-            	alert('starting');
                   loadView();
             });
 
             socket.on('playerJoined', function(data){
-            	alert('player joined');
                   loadView();
             });
 
+            socket.on('end', function(){
+            	$scope.playing = false;
+            });
       }
 
       function checkLoading(){
@@ -107,6 +114,10 @@ angular.module('webs6').controller('GameController', function(GameService, UserS
       }
 
       function canMatch(tile){
+      		if(!$scope.playing)
+      		{
+      			return false;
+      		}
             var z = tile.zPos;
             var x = tile.xPos;
             var y = tile.yPos;
