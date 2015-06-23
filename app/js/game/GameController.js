@@ -10,9 +10,16 @@ angular.module('webs6').controller('GameController', function(GameService, UserS
 	this.init = function()
 	{ 
 
-		var gamesCtrl = $scope;
-      	GameService.getGame(gamesCtrl.gameId).then(function(response){
-      		gamesCtrl.game = response.data;
+		loadView();
+            webSocket();
+      }
+	this.init();
+      var init = this.init();
+
+      function loadView(){
+            var gamesCtrl = $scope;
+            GameService.getGame(gamesCtrl.gameId).then(function(response){
+                  gamesCtrl.game = response.data;
                   $scope.loadingInfo = false;
                   checkLoading();
                   if(gamesCtrl.game.state != 'open')
@@ -20,11 +27,8 @@ angular.module('webs6').controller('GameController', function(GameService, UserS
                         gamesCtrl.waiting = false;
                         loadTiles();
                   }
-      	});
-            webSocket();
+            });
       }
-	this.init();
-      var init = this.init();
 
       $scope.match = function(tile)
       {
@@ -70,15 +74,17 @@ angular.module('webs6').controller('GameController', function(GameService, UserS
             socket.on('match', function(data) {
                   setMatched(data[0]);
                   setMatched(data[1]);
-                  console.log('WEBSOCKET');
+               	  console.log('WEBSOCKET');
             });
 
             socket.on('start', function() {
-                  loadTiles();
+            	alert('starting');
+                  loadView();
             });
 
             socket.on('playerJoined', function(data){
-                  $scope.game.players.push(data);
+            	alert('player joined');
+                  loadView();
             });
 
       }
