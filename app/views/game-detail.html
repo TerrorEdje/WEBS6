@@ -34,7 +34,8 @@
 				<h3>Players</h3>
 				<p ng-repeat="player in game.players">
 					{{player.name}}<br/>
-					{{player.numberOfMatches}} matches
+					{{player.numberOfMatches}} matches<br/>
+					<span class="tile {{tile.tile.suit}} t_{{tile.tile.name}}" ng-repeat="tile in tiles" style="position:relative;display:inline-block" ng-if="tile.match.foundBy == player._id"></span>
 				</p>
 			</div>
 		</div>
