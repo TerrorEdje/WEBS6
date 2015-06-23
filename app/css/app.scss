@@ -3,6 +3,12 @@
   color: grey;
 }
 
+$backgroundcolor: white;
+
+body {
+	background-color: $backgroundcolor;
+}
+
 .loading{
 	background-image: url('./res/load.gif');
 	background-repeat: no-repeat;
