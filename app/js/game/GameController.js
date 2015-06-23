@@ -14,13 +14,11 @@ angular.module('webs6').controller('GameController', function(GameService, UserS
                   $scope.loadingInfo = false;
                   checkLoading();
       	});
-            GameService.getGameTiles(gamesCtrl.gameId).then(function(response){
-                  gamesCtrl.tiles = response.data;
-                  $scope.loadingTiles = false;
-                  checkLoading();
-            });	
+            loadTiles();
+            webSocket();
       }
 	this.init();
+      var init = this.init();
 
       $scope.match = function(tile)
       {
@@ -38,8 +36,8 @@ angular.module('webs6').controller('GameController', function(GameService, UserS
                         ){
                               GameService.postGameTiles($scope.game,tile,matchTile);
                               console.log('match!');
-                              removeTile(tile._id);
-                              removeTile(matchTile._id);
+                              //removeTile(tile._id);
+                              //removeTile(matchTile._id);
                               
                         }else{
                               console.log('no match!')
@@ -51,18 +49,39 @@ angular.module('webs6').controller('GameController', function(GameService, UserS
             }            
       }
 
+      function loadTiles() {
+            var gamesCtrl = $scope;
+            GameService.getGameTiles(gamesCtrl.gameId).then(function(response){
+                  gamesCtrl.tiles = response.data;
+                  $scope.loadingTiles = false;
+                  checkLoading();
+            });
+      }
+
+      function webSocket() {
+            var socket = io("http://mahjongmayhem.herokuapp.com/?gameId=" + $scope.gameId);
+
+            socket.on('match', function(data) {
+                  setMatched(data[0]);
+                  setMatched(data[1]);
+                  console.log('WEBSOCKET');
+            });
+
+      }
+
       function checkLoading(){
             if(!$scope.loadignTiles && !$scope.loadingInfo)
             {
                   $scope.loading = false;
             }
       }
-      function removeTile(id){
+      function setMatched(tile){
+            console.log('beginsetmatched');
             for (var i = $scope.tiles.length - 1; i >= 0; i--) {
-                  var tile = $scope.tiles[i];
-                  if(tile._id == id)
+                  if(tile._id == $scope.tiles[i]._id)
                   {
-                        $scope.tiles.splice(i, 1);
+                        console.log('setMatched');
+                        $scope.tiles[i] = tile;
                   }
             };
       }
@@ -73,11 +92,11 @@ angular.module('webs6').controller('GameController', function(GameService, UserS
             var y = tile.yPos;
             for (var i = $scope.tiles.length - 1; i >= 0; i--) {
                   var curTile = $scope.tiles[i];
-                  if(curTile.zPos > z)
+                  if(curTile.zPos > z && !curTile.match)
                   {
                         if(
-                              (curTile.xPos == x + 1 || curTile.xPos == x - 1)&&
-                              (curTile.yPos == y + 1 || curTile.yPos == y - 1)
+                              (curTile.xPos == x + 1 || curTile.xPos == x - 1 || curTile.xPos == x)&&
+                              (curTile.yPos == y + 1 || curTile.yPos == y - 1 || curTile.yPos == y)
                         ){
                               return false;
                         }
