@@ -5,16 +5,22 @@ angular.module('webs6').controller('GameController', function(GameService, UserS
       $scope.loadingInfo = true;
       $scope.loadingTiles = true;
       $scope.loading = true;
+      $scope.waiting = true;
       $scope.matchTile = null;
 	this.init = function()
 	{ 
+
 		var gamesCtrl = $scope;
       	GameService.getGame(gamesCtrl.gameId).then(function(response){
       		gamesCtrl.game = response.data;
                   $scope.loadingInfo = false;
                   checkLoading();
+                  if(gamesCtrl.game.state != 'open')
+                  {
+                        gamesCtrl.waiting = false;
+                        loadTiles();
+                  }
       	});
-            loadTiles();
             webSocket();
       }
 	this.init();
@@ -67,10 +73,18 @@ angular.module('webs6').controller('GameController', function(GameService, UserS
                   console.log('WEBSOCKET');
             });
 
+            socket.on('start', function() {
+                  loadTiles();
+            });
+
+            socket.on('playerJoined', function(data){
+                  $scope.game.players.push(data);
+            });
+
       }
 
       function checkLoading(){
-            if(!$scope.loadignTiles && !$scope.loadingInfo)
+            if(!$scope.loadingTiles && !$scope.loadingInfo && !$scope.waiting)
             {
                   $scope.loading = false;
             }

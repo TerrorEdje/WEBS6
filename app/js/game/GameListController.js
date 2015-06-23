@@ -38,18 +38,6 @@ angular.module('webs6').controller('GameListController', function(GameService, U
 		return true;
 	}
 
-	$scope.canView = function(game) {
-		if (game.state == 'playing') {
-			for (var i = game.players.length - 1; i >= 0; i--) {
-				if(username == game.players[i]._id)
-				{
-					return true;
-				}
-			}
-		}
-		return false;
-	}
-
 	$scope.canStart = function(game) {
 		if (game.state != 'open') {
 			return false;

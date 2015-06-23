@@ -23,6 +23,7 @@
 		</p>
 		<div class="starter-template">
 			<div class="col-md-10">
+				<h1 ng-show="waiting">Waiting for the game to start...</h1>
 				<loader></loader>
 				<div class="gametable" ng-if="!loading">
 					<div class="tile {{tile.tile.suit}} t_{{tile.tile.name}} x-{{tile.xPos}} y-{{tile.yPos}} z-{{tile.zPos}}" ng-hide="tile.match" ng-repeat="tile in tiles" ng-click="match(tile)">
